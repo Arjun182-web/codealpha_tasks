@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="card shadow-lg border-0 p-4">
+
+        <div class="row">
+
+            <!-- Product Image -->
+
+            <div class="col-md-5 text-center">
+
+                {% if product.image %}
+                    <img
+                        src="{{ product.image.url }}"
+                        class="img-fluid rounded"
+                        style="max-height:450px; object-fit:contain;"
+                    >
+                {% else %}
+                    <img
+                        src="https://via.placeholder.com/450"
+                        class="img-fluid rounded"
+                    >
+                {% endif %}
+
+            </div>
+
+            <!-- Product Details -->
+
+            <div class="col-md-7">
+
+                <h1 class="fw-bold">
+                    {{ product.name }}
+                </h1>
+
+                <hr>
+
+                <h2 class="text-success fw-bold">
+                    ₹{{ product.price }}
+                </h2>
+                
+                <p class="text-muted">
+                    Inclusive of all taxes
+                </p>
+
+                <p class="text-success fw-bold">
+                    Free Delivery Available
+                </p>
+
+
+                <p class="mt-4">
+                    {{ product.description }}
+                </p>
+
+                <p>
+                    <strong>Stock:</strong>
+
+                    {% if product.stock > 0 %}
+                        <span class="text-success">
+                            {{ product.stock }} Available
+                        </span>
+                    {% else %}
+                        <span class="text-danger">
+                            Out of Stock
+                        </span>
+                    {% endif %}
+                </p>
+
+                <div class="mt-4">
+
+                    {% if product.stock > 0 %}
+
+                        <a href="{% url 'add_to_cart' product.id %}">
+                        <button class="btn btn-primary btn-lg">
+                            Add To Cart
+                        </button>
+                        </a>
+
+                    {% else %}
+
+                    <button
+                        class="btn btn-danger btn-lg"
+                        disabled
+                    >
+                        Out Of Stock
+                    </button>
+
+                    {% endif %}
+
+                    <a
+                        href="/"
+                        class="btn btn-outline-secondary btn-lg"
+                    >
+                        Continue Shopping
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,565 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Store</title>
+
+    <style>
+
+        body{
+
+    font-family: Arial, sans-serif;
+
+    background:linear-gradient(
+        -45deg,
+        #f8f9fa,
+        #eef5ff,
+        #f8f9fa,
+        #f1f8ff
+    );
+
+    background-size:400% 400%;
+
+    animation:gradientMove 15s ease infinite;
+
+    margin:0;
+    padding:0px;
+
+}
+
+@keyframes gradientMove{
+
+    0%{
+        background-position:0% 50%;
+    }
+
+    50%{
+        background-position:100% 50%;
+    }
+
+    100%{
+        background-position:0% 50%;
+    }
+
+}
+
+.bg-animation span{
+
+    position:fixed;
+
+    width:180px;
+
+    height:180px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,0.4);
+
+backdrop-filter:blur(20px);
+
+box-shadow:0 0 100px rgba(0,0,0,0.03);
+
+    z-index:-1;
+
+    animation:floatCircle 15s ease-in-out infinite;
+
+}
+
+.bg-animation span:nth-child(1){
+
+    top:10%;
+
+    left:10%;
+
+}
+
+.bg-animation span:nth-child(2){
+
+    top:60%;
+
+    left:80%;
+
+}
+
+.bg-animation span:nth-child(3){
+
+    top:35%;
+
+    left:55%;
+
+}
+
+.bg-animation span:nth-child(4){
+
+    top:85%;
+
+    left:25%;
+
+}
+
+@keyframes floatCircle{
+
+    0%,
+    100%{
+
+        transform:translateY(0px);
+
+    }
+
+    50%{
+
+        transform:translateY(-50px);
+
+    }
+
+}
+
+
+        h1{
+            text-align:center;
+        }
+
+        h2{
+            text-align: center;
+        }
+
+        .products{
+            display:flex;
+            flex-wrap:wrap;
+            gap:20px;
+            justify-content:center;
+        }
+
+        .card{
+            background:white;
+            width:300px;
+            padding:20px;
+            border-radius:15px;
+            transition:all 0.3s ease;
+            cursor:pointer;
+            overflow:hidden;
+            animation:fadeUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeUp{
+
+            from{
+                opacity:0;
+                transform:translateY(30px);
+            }
+
+            to{
+                opacity:1;
+                transform:translateY(0);
+            }
+
+        }
+
+        .card:nth-child(1){
+            animation-delay:0.1s;
+        }
+
+        .card:nth-child(2){
+            animation-delay:0.2s;
+        }   
+
+        .card:nth-child(3){
+            animation-delay:0.3s;
+        }
+
+        .card:nth-child(4){
+            animation-delay:0.4s;
+        }
+
+        .card:nth-child(5){
+            animation-delay:0.5s;
+        }
+
+        .card:nth-child(6){
+           animation-delay:0.6s;
+        }
+
+        .card:hover{
+            transform:translateY(-10px);
+            box-shadow:0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        .hero-content{
+            animation:fadeFloat 4s ease-in-out infinite;
+        }
+
+        @keyframes fadeFloat{
+
+            0%{
+                transform:translateY(0);
+            }
+
+            50%{
+                transform:translateY(-4px);
+            }
+
+            100%{
+                transform:translateY(0);
+            }
+
+        }
+
+        .product-image{
+            width:100%;
+            height:250px;
+            object-fit:cover;
+            border-radius:10px;
+            transition:transform 0.5s ease;
+        }
+
+        .card:hover .product-image{
+            transform:scale(1.12) rotate(1deg);
+        }
+
+        .price{
+            color:green;
+            font-size:22px;
+            font-weight:bold;
+        }
+        
+      
+        .hero-btn{
+            animation:pulse 2s infinite;
+        }
+
+        @keyframes pulse{
+
+            0%{
+                box-shadow:0 0 0 0 rgba(13,110,253,0.7);
+            }
+
+            70%{
+                box-shadow:0 0 0 20px rgba(13,110,253,0);
+            }
+
+            100%{
+                box-shadow:0 0 0 0 rgba(13,110,253,0);
+            }
+
+        }
+
+        .stats-card{
+            transition:all 0.3s ease;   
+        }
+
+        .stats-card:hover{
+            transform:translateY(-12px) scale(1.03);
+            box-shadow:0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        button{
+            background:#007bff;
+            color:white;
+            border:none;
+            padding:10px;
+            border-radius:5px;
+            cursor:pointer;
+            transition:all 0.3s ease;
+        }
+
+        button:hover,
+        .btn:hover{
+            transform:scale(1.05);
+        }
+
+
+        .btn-outline-primary{
+            transition:all 0.3s ease;
+        }
+
+        .btn-outline-primary:hover{
+            transform:translateY(-3px);
+            box-shadow:0 10px 20px rgba(13,110,253,0.3);
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="bg-animation">
+
+    <span></span>
+
+    <span></span>
+
+    <span></span>
+
+    <span></span>
+
+</div>
+
+<div
+    class="hero-section mb-5 rounded overflow-hidden shadow"
+    style="
+        background-image:url('/media/banner.png');
+        background-size:cover;
+        background-position:center;
+        min-height:400px;
+        position:relative;
+    "
+>
+
+    <div
+        class="d-flex flex-column justify-content-center align-items-center text-white hero-content"
+        style="
+            background:rgba(0,0,0,0.55);
+            min-height:400px;
+        "
+    >
+
+        <h1 class="display-5 fw-bold">
+            Mega Sale Is Live!
+        </h1>
+
+        <p class="lead">
+            Premium Products • Fast Delivery • Secure Shopping
+        </p>
+
+        <a href="#products"
+            class="btn btn-primary btn-lg hero-btn">
+                Shop Now
+        </a>
+
+    </div>
+
+</div>
+
+<div class="row text-center my-5">
+
+    <div class="col-md-3">
+        <div class="card border-0 shadow text-center p-4 stats-card">
+            <h2 class="text-primary fw-bold">
+                500+
+            </h2>
+            <p class="mb-0">
+                Products
+            </p>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card border-0 shadow text-center p-4 stats-card">
+            <h2 class="text-success fw-bold">
+                1000+
+            </h2>
+            <p class="mb-0">
+                Customers
+            </p>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card border-0 shadow text-center p-4 stats-card">
+            <h2 class="text-warning fw-bold">
+                24/7
+            </h2>
+            <p class="mb-0">
+                Support
+            </p>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card border-0 shadow text-center p-4 stats-card">
+            <h2 class="text-danger fw-bold">
+                100%
+            </h2>
+            <p class="mb-0">
+                Secure Payments
+            </p>
+        </div>
+    </div>
+
+</div>
+
+
+<a href="/cart/" class="btn btn-dark mb-4">
+    View Cart
+</a>
+<div class="mb-4">
+
+    <a href="/" class="btn btn-dark">
+        All
+    </a>
+
+    {% for category in categories %}
+
+        <a
+            href="?category={{ category.id }}"
+            class="btn btn-outline-primary"
+        >
+            {{ category.name }}
+        </a>
+
+    {% endfor %}
+
+</div>
+<form method="GET" class="mb-4">
+
+    <input
+        type="hidden"
+        name="category"
+        value="{{ request.GET.category }}"
+    >
+
+    <select
+        name="sort"
+        onchange="this.form.submit()"
+        class="form-select"
+    >
+
+        <option value="">
+            Sort Products
+        </option>
+
+        <option value="low">
+            Price: Low → High
+        </option>
+
+        <option value="high">
+            Price: High → Low
+        </option>
+
+        <option value="new">
+            Newest First
+        </option>
+
+    </select>
+
+</form>
+
+<div
+    class="products"
+    id="products"
+>
+
+{% for product in products %}
+
+
+
+<div class="card">
+
+    {% if product.image %}
+<img
+    src="{{ product.image.url }}"
+    class="product-image"
+>
+{% endif %}
+
+    <h2 >
+        <a href="{% url 'product_detail' product.id %}">
+            {{ product.name }}
+        </a>
+    </h2>
+
+    <p>{{ product.description }}</p>
+
+    <p class="price">
+        ₹{{ product.price }}
+    </p>
+
+    <p>
+        Stock: {{ product.stock }}
+    </p>
+
+    {% if product.stock > 0 %}
+
+<a href="{% url 'add_to_cart' product.id %}">
+    <button class="btn btn-primary">
+        Add To Cart
+    </button>
+</a>
+
+<a
+    href="{% url 'add_to_wishlist' product.id %}"
+    class="btn btn-outline-danger mt-2"
+>
+    ❤️ Wishlist
+</a>
+
+{% else %}
+
+<button
+    class="btn btn-danger"
+    disabled
+>
+    Out Of Stock
+</button>
+
+{% endif %}
+
+</div>
+
+{% endfor %}
+
+</div>
+
+<div class="d-flex justify-content-center mt-5">
+
+    <nav>
+
+        <ul class="pagination">
+
+            {% if products.has_previous %}
+
+            <li class="page-item">
+
+                <a
+                    class="page-link"
+                    href="?page={{ products.previous_page_number }}"
+                >
+                    Previous
+                </a>
+
+            </li>
+
+            {% endif %}
+
+            {% for num in products.paginator.page_range %}
+
+            <li class="page-item {% if products.number == num %}active{% endif %}">
+
+                <a
+                    class="page-link"
+                    href="?page={{ num }}"
+                >
+                    {{ num }}
+                </a>
+
+            </li>
+
+            {% endfor %}
+
+            {% if products.has_next %}
+
+            <li class="page-item">
+
+                <a
+                    class="page-link"
+                    href="?page={{ products.next_page_number }}"
+                >
+                    Next
+                </a>
+
+            </li>
+
+            {% endif %}
+
+        </ul>
+
+    </nav>
+
+</div>
+
+</body>
+
+</html>
+{% endblock %}
