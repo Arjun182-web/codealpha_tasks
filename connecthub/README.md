@@ -84,13 +84,15 @@ connecthub/
 ## Clone Repository
 
 ```bash
-git clone https://github.com/Arjun182-web/CODEALPHA_TASKS.git
+git clone https://github.com/Arjun182-web/codealpha_tasks.git
+
+
 ```
 
 ## Navigate
 
 ```bash
-cd CODEALPHA_TASKS/connecthub
+cd codealpha_tasks/connecthub
 ```
 
 ## Create Virtual Environment

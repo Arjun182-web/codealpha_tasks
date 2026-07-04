@@ -157,13 +157,13 @@ CodeAlpha_Ecommerce/
 ### 1. Clone Repository
 
 ```bash
-git clone https://github.com/Arjun182-web/CodeAlpha-Ecommerce-Website.git
+git clone https://github.com/Arjun182-web/codealpha_tasks.git
 ```
 
 ### 2. Navigate to Project Folder
 
 ```bash
-cd CodeAlpha-Ecommerce-Website
+cd codealpha_tasks/CodeAlpha_Ecommerce
 ```
 
 ### 3. Create Virtual Environment

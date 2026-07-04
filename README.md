@@ -89,7 +89,7 @@ CodeAlpha_Ecommerce/
 Clone the repository
 
 ```bash
-git clone https://github.com/Arjun182-web/CODEALPHA_TASKS.git
+git clone https://github.com/Arjun182-web/codealpha_tasks
 ```
 
 Navigate into any project
